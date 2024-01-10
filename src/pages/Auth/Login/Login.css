@@ -1,0 +1,18 @@
+.container {
+  height: 100dvh;
+}
+
+.h1 {
+  font-size: 3rem;
+}
+
+#loginForm {
+  min-width: 320px;
+  max-width: 450px;
+}
+
+.btn {
+  height: 45px;
+  font-size: 17px;
+  font-weight: 600;
+}
