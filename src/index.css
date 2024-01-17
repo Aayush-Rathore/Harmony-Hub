@@ -3,3 +3,11 @@
   margin: 0px;
   box-sizing: border-box;
 }
+
+body {
+  background: url("./assets/MusicBg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  aspect-ratio: 5760 / 4320;
+}

@@ -22,10 +22,9 @@ const Login = () => {
   const hangleSubmit = async (values, resetForm) => {
     setIsLoading(true); // Set loading state to true
     const User = await LoginFun(values); // Calling login function
-    console.log(User);
     if (User) {
       await setUser(User); // Set user context if login succeeds
-      navigate("/Home"); // Navigate to Home page
+      navigate("/"); // Navigate to Home page
     }
     resetForm(); // Reset form fields after submission
     setIsLoading(false); // Set loading state to false

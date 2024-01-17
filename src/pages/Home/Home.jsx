@@ -1,5 +1,11 @@
+import ControlPanel from "../../components/ControlPanel/ControlPanel";
+
 const Home = () => {
-  return <h1>Hello</h1>;
+  return (
+    <div>
+      <ControlPanel />
+    </div>
+  );
 };
 
 export default Home;
