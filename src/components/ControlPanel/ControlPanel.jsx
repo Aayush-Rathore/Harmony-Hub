@@ -1,3 +1,4 @@
+// ControlPanel.js
 import "./ControlPanel.css";
 import { useEffect, useRef, useState } from "react";
 import { IoPlay, IoPause, IoPlayBack, IoPlayForward } from "react-icons/io5";
@@ -23,10 +24,20 @@ const ControlPanel = () => {
       setDuration(audioEl.current.duration);
     });
 
+    audioEl.current.addEventListener("timeupdate", () => {
+      setCurrentTime(audioEl.current.currentTime);
+    });
+
     audioEl.current.addEventListener("ended", () => {
       setIsPlaying(false);
       setCurrentTime(0); // Reset current time when the song is completed
     });
+
+    return () => {
+      audioEl.current.removeEventListener("loadedmetadata", () => {});
+      audioEl.current.removeEventListener("timeupdate", () => {});
+      audioEl.current.removeEventListener("ended", () => {});
+    };
   }, []);
 
   const ToggelPlay = () => {
@@ -37,7 +48,11 @@ const ControlPanel = () => {
     <div className="d-sm-flex flex-row-reverse justify-content-center align-items-center position-fixed fixed-bottom w-100 control-panel">
       <audio src="./PAISA.mp3" ref={audioEl} />
 
-      <TimeLineBar duration={(currentTime / duration) * 100} />
+      <TimeLineBar
+        timeLine={(currentTime / duration) * 100 + "%"}
+        audioEl={audioEl}
+        duration={duration}
+      />
 
       <div className="controllers d-flex justify-content-center align-items-center gap-4 m-3">
         <IoPlayBack size={45} color="#2a2d3a" />
